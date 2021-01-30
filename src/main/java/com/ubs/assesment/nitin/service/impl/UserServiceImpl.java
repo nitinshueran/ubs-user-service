@@ -1,5 +1,8 @@
 package com.ubs.assesment.nitin.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +19,20 @@ import lombok.extern.slf4j.Slf4j;
  * The Class UserServiceImpl implements all methods in UserService.
  */
 @Service
+
+/** The Constant log. */
 @Slf4j
 public class UserServiceImpl implements UserService {
 
+	/** The user repository. */
 	@Autowired
 	private UserRepository userRepository;
 
+	/** The propertyrepository. */
 	@Autowired
 	private PropertyRepository propertyrepository;
 
+	/** The item repository. */
 	@Autowired
 	private ItemRepository itemRepository;
 
@@ -39,6 +47,18 @@ public class UserServiceImpl implements UserService {
 		User user = userRepository.findByUsername(username);
 		log.info("User: {}", user.toString());
 		return UserItemsDTO.builder().idUser(user.getIdUser()).item(user.getItem()).build();
+	}
+
+	/**
+	 * Gets the user ids.
+	 *
+	 * @return the user ids
+	 */
+	@Override
+	public List<String> getUserIds() {
+		List<String> usersIds = new ArrayList<>();
+		userRepository.findAll().forEach(usr -> usersIds.add(usr.getUsername()));
+		return usersIds;
 	}
 
 }

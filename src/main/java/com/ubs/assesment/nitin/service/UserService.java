@@ -1,5 +1,7 @@
 package com.ubs.assesment.nitin.service;
 
+import java.util.List;
+
 import com.ubs.assesment.nitin.dto.UserItemsDTO;
 
 /**
@@ -15,4 +17,11 @@ public interface UserService {
 	 * @return the user details
 	 */
 	UserItemsDTO getUserDetails(String username);
+
+	/**
+	 * Gets the user ids.
+	 *
+	 * @return the user ids
+	 */
+	List<String> getUserIds();
 }
