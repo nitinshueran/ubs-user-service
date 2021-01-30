@@ -1,4 +1,4 @@
-package com.ubs.assesment.nitin.controller;
+package com.ubs.assesment.nitin.helper;
 
 import javax.servlet.http.HttpServletRequest;
 
