@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,10 +26,6 @@ public class Item {
 	@Id
 	private Integer idItem;
 
-	@ManyToOne()
-	@JoinColumn(name = "idUser")
-	private User user;
-
 	/** The name. */
 	private String name;
 
@@ -43,7 +38,8 @@ public class Item {
 	/** The quantity. */
 	private Integer quantity;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idItem")
 	private List<Property> property;
 
 }

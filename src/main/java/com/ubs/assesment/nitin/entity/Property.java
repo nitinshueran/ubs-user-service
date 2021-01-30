@@ -2,8 +2,6 @@ package com.ubs.assesment.nitin.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,11 +20,6 @@ public class Property {
 	/** The id property. */
 	@Id
 	private Integer idProperty;
-
-	/** The id item. */
-	@ManyToOne()
-	@JoinColumn(name = "idItem")
-	private Item item;
 
 	/** The name. */
 	private String name;

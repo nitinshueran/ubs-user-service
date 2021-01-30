@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.ubs.assesment.nitin.dto.UserItemsDTO;
 import com.ubs.assesment.nitin.entity.User;
-import com.ubs.assesment.nitin.repository.ItemRepository;
-import com.ubs.assesment.nitin.repository.PropertyRepository;
 import com.ubs.assesment.nitin.repository.UserRepository;
 import com.ubs.assesment.nitin.service.UserService;
 
@@ -28,14 +26,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	/** The propertyrepository. */
-	@Autowired
-	private PropertyRepository propertyrepository;
-
-	/** The item repository. */
-	@Autowired
-	private ItemRepository itemRepository;
-
 	/**
 	 * Gets the user details.
 	 *
@@ -46,7 +36,8 @@ public class UserServiceImpl implements UserService {
 	public UserItemsDTO getUserDetails(String username) {
 		User user = userRepository.findByUsername(username);
 		log.info("User: {}", user.toString());
-		return UserItemsDTO.builder().idUser(user.getIdUser()).item(user.getItem()).build();
+		return UserItemsDTO.builder().idUser(user.getIdUser()).username(user.getUsername()).item(user.getItem())
+				.build();
 	}
 
 	/**
